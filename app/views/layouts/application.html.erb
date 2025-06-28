@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CoffeeDrop</title>
+    <title>Капля</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,26 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
+  <body class="container mx-auto">
+    <header class="bg-white px-6 py-2.5">
+      <div class="flex justify-between items-center mx-auto">
+        <a href="https://flowbite.com" class="flex items-center gap-3">
+          <img src="https://flowbite.com/docs/images/logo.svg" class="h-9" alt="Logo" />
+          <span class="text-xl font-semibold">Капля</span>
+        </a>
+        <div class="flex justify-between w-auto">
+          <ul class="flex mt-4 font-medium gap-8 text-gray-700">
+            <li>
+              <%= link_to "Заказы", orders_path %>
+            </li>
+            <li>
+              <%= link_to "Позиции меню", order_items_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>
