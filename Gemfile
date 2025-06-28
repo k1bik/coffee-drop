@@ -14,12 +14,15 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 gem "dotenv", "~> 3.1", ">= 3.1.8"
+gem "sorbet-runtime"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
+  gem "tapioca",  "~> 0.17", require: false
 end
 
 group :development do
+  gem "sorbet"
   gem "web-console"
 end
 
