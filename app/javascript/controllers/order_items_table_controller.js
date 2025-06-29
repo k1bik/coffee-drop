@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { Grid } from "gridjs"
 import { ruRU } from "gridjs/l10n"
 
-export default class extends Controller {
+export default class OrderItemsTableController extends Controller {
   connect() {
     new Grid({
       search: true,

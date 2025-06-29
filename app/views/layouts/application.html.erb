@@ -11,20 +11,28 @@
   </head>
 
   <body class="container mx-auto">
-    <header class="bg-white px-6 py-2.5">
+    <header class="bg-white py-2.5 mb-8">
       <div class="flex justify-between items-center mx-auto">
         <span class="text-xl font-semibold">Капля</span>
         <div class="flex justify-between w-auto">
           <ul class="flex mt-4 font-medium gap-8 text-gray-700">
             <li>
-              <%= link_to "Заказы", orders_path %>
+              <%= link_to orders_path, class: "group transition duration-300" do %>
+                Заказы
+                <span class="block <%= %w[/ /orders].include?(request.path) ? "max-w-full" : "max-w-0" %>  group-hover:max-w-full transition-all duration-500 h-0.5 bg-purple-600"></span>
+              <% end %>
             </li>
             <li>
-              <%= link_to "Позиции меню", order_items_path %>
+              <%= link_to order_items_path, class: "group transition duration-300" do %>
+                Позиции меню
+                <span class="block <%= request.path == "/order_items" ? "max-w-full" : "max-w-0" %> group-hover:max-w-full transition-all duration-500 h-0.5 bg-purple-600"></span>
+              <% end %>
             </li>
           </ul>
         </div>
       </div>
+
+      <div class="mt-2 h-[1px] w-full bg-purple-600"></div>
     </header>
 
     <%= yield %>

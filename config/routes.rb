@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "orders#index"
 
-  resources :order_items
+  resources :order_items do
+    get :remove_form, on: :collection
+  end
   resources :orders, only: %i[index]
 
   namespace :api do

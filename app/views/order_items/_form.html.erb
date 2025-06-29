@@ -1,0 +1,50 @@
+<% render_error = ->(obj, field) do
+  if (errors = obj.errors[field]).present?
+    tag.span errors.join(", "), class: "text-red-600"
+  end
+end %>
+
+<%= form_with url: order_items_path, method: :post, model: order_item, class: "relative flex flex-col text-sm gap-4 bg-gray-50 px-5 py-3 rounded-sm" do |f| %>
+  <div class="flex gap-4">
+    <div class="flex flex-col w-2/3">
+      <%= f.label :name do %>
+        Название
+        <span class="text-red-600">*</span>
+      <% end %>
+      <%= f.text_field :name, autofocus: true, placeholder: "Введите название", class: "p-2 bg-white border border-gray-300 rounded-sm focus:outline-purple-500 w-full" %>
+      <%= render_error.call(order_item, :name) %>
+    </div>
+
+    <div class="flex flex-col w-1/3">
+      <%= f.label :name do %>
+        Цена, руб
+        <span class="text-red-600">*</span>
+      <% end %>
+      <%= f.number_field :price, placeholder: "Введите цену", class: "p-2 bg-white border border-gray-300 rounded-sm focus:outline-purple-500 w-full", step: 0.01, min: 0.01 %>
+      <%= render_error.call(order_item, :price) %>
+    </div>
+  </div>
+
+  <div class="flex flex-col">
+    <%= f.label :description, "Описание" %>
+    <%= f.text_area  :description, placeholder: "Введите описание", class: "p-2 bg-white border border-gray-300 rounded-sm focus:outline-purple-500 w-full" %>
+    <%= render_error.call(order_item, :description) %>
+  </div>
+
+  <div>
+    <%= f.button :submit, class: "cursor-pointer relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-purple-100 rounded hover:bg-white group py-1.5 px-2.5" do %>
+      <span class="w-56 h-48 rounded bg-purple-600 absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+      <span class="relative w-full text-left text-purple-600 transition-colors duration-300 ease-in-out group-hover:text-white">
+        Добавить
+      </span>
+    <% end %>
+  </div>
+
+  <div class="absolute top-1 right-1">
+    <%= link_to remove_form_order_items_path, data: { turbo_stream: true } do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    <% end %>
+  </div>
+<% end %>

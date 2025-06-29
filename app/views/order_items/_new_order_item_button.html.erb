@@ -1,0 +1,11 @@
+<div class="flex w-full justify-end">
+  <%= link_to new_order_item_path, data: { turbo_frame: "new_order_item_form" }, class: "relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-purple-100 rounded hover:bg-white group py-1.5 px-2.5" do %>
+    <span class="w-56 h-48 rounded bg-purple-600 absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+    <span class="flex gap-2 relative w-full text-left text-purple-600 transition-colors duration-300 ease-in-out group-hover:text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+      Новая позиция
+    </span>
+  <% end %>
+</div>

@@ -19,10 +19,31 @@ class OrderItemsController < ApplicationController
     permitted_params = params.require(:order_item).permit(:name, :description, :price)
     order_item = T.let(OrderItem.new(permitted_params), T.nilable(OrderItem))
 
-    if T.must(order_item).save
-      redirect_to order_items_path
-    else
-      redirect_to new_order_item_path
+    respond_to do |f|
+      if T.must(order_item).save
+        f.turbo_stream do
+          render(
+            turbo_stream: [
+              turbo_stream.update(:order_items_table, partial: "order_items/order_items_table"),
+              turbo_stream.update(
+                :new_order_item_form,
+                partial: "order_items/form",
+                locals: {order_item: OrderItem.new}
+              )
+            ]
+          )
+        end
+      else
+        f.turbo_stream do
+          render(
+            turbo_stream: turbo_stream.update(
+              :new_order_item_form,
+              partial: "order_items/form",
+              locals: {order_item:}
+            )
+          )
+        end
+      end
     end
   end
 
@@ -36,5 +57,14 @@ class OrderItemsController < ApplicationController
 
   sig { void }
   def destroy
+  end
+
+  sig { void }
+  def remove_form
+    respond_to do |f|
+      f.turbo_stream do
+        render(turbo_stream: turbo_stream.update(:new_order_item_form, partial: "order_items/new_order_item_button"))
+      end
+    end
   end
 end
