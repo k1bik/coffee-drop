@@ -10,14 +10,37 @@ export default class extends Controller {
       resizable: true,
       fixedHeader: true,
       language: ruRU,
-      columns: ["Name", "Email", "Phone Number"],
-      data: [
-        ["John", "john@example.com", "(353) 01 222 3333"],
-        ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-        ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
-        ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
-        ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
+      columns: [
+        "Название",
+        "Описание",
+        "Цена",
+        {
+          name: "Дата создания",
+          formatter: date => this._formatDate(date)
+        },
+        {
+          name: "Дата обновления",
+          formatter: date => this._formatDate(date)
+        }
       ],
+      pagination: {
+        limit: 20
+      },
+      server: {
+        url: "/api/order_items",
+        then: data => data
+      }
     }).render(this.element)
+  }
+
+  _formatDate(isoString) {
+    const date = new Date(isoString)
+    const day = String(date.getDate()).padStart(2, "0")
+    const month = String(date.getMonth() + 1).padStart(2, "0")
+    const year = date.getFullYear()
+    const hours = String(date.getHours()).padStart(2, "0")
+    const minutes = String(date.getMinutes()).padStart(2, "0")
+
+    return `${day}.${month}.${year} ${hours}:${minutes}`
   }
 }

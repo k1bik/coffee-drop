@@ -6,7 +6,6 @@
 
 
 class Order
-  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -328,22 +327,6 @@ class Order
     def third_to_last!; end
   end
 
-  module GeneratedAssociationMethods
-    sig { returns(T::Array[T.untyped]) }
-    def item_ids; end
-
-    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
-    def item_ids=(ids); end
-
-    # This method is created by ActiveRecord on the `Order` class because it declared `has_many :items`.
-    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
-    sig { returns(::OrderItem::PrivateCollectionProxy) }
-    def items; end
-
-    sig { params(value: T::Enumerable[::OrderItem]).void }
-    def items=(value); end
-  end
-
   module GeneratedAssociationRelationMethods
     sig { returns(PrivateAssociationRelation) }
     def all; end
@@ -581,6 +564,51 @@ class Order
     sig { void }
     def created_at_will_change!; end
 
+    sig { returns(::ActiveSupport::TimeWithZone) }
+    def due_date; end
+
+    sig { params(value: ::ActiveSupport::TimeWithZone).returns(::ActiveSupport::TimeWithZone) }
+    def due_date=(value); end
+
+    sig { returns(T::Boolean) }
+    def due_date?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def due_date_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def due_date_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def due_date_came_from_user?; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def due_date_change; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def due_date_change_to_be_saved; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def due_date_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def due_date_in_database; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def due_date_previous_change; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def due_date_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def due_date_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def due_date_was; end
+
+    sig { void }
+    def due_date_will_change!; end
+
     sig { returns(::Integer) }
     def id; end
 
@@ -675,6 +703,9 @@ class Order
     def restore_created_at!; end
 
     sig { void }
+    def restore_due_date!; end
+
+    sig { void }
     def restore_id!; end
 
     sig { void }
@@ -688,6 +719,12 @@ class Order
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
     def saved_change_to_created_at?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def saved_change_to_due_date; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def saved_change_to_due_date?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { returns(T.nilable([::Integer, ::Integer])) }
     def saved_change_to_id; end
@@ -754,6 +791,9 @@ class Order
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
     def will_save_change_to_created_at?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def will_save_change_to_due_date?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
     def will_save_change_to_id?(from: T.unsafe(nil), to: T.unsafe(nil)); end

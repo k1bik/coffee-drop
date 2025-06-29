@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   resources :order_items
   resources :orders, only: %i[index]
+
+  namespace :api do
+    resources :order_items, only: %i[index]
+  end
 end

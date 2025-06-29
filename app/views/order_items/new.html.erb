@@ -1,0 +1,14 @@
+<turbo-frame id="new_order_item_modal">
+  <%= form_with url: order_items_path, method: :post, model: @order_item do |f| %>
+    <%= f.label :name, "Название" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :description, "Описание" %>
+    <%= f.text_field :description %>
+
+    <%= f.label :price, "Цена, руб" %>
+    <%= f.number_field :price %>
+
+    <%= f.submit "Добавить" %>
+  <% end %>
+</turbo-frame>

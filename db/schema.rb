@@ -15,12 +15,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_28_212113) do
   enable_extension "plpgsql"
 
   create_table "order_items", force: :cascade do |t|
-    t.bigint "order_id", null: false
     t.string "name", null: false
+    t.text "description"
     t.decimal "price", precision: 10, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -29,5 +28,4 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_28_212113) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "order_items", "orders"
 end

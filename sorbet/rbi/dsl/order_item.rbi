@@ -6,7 +6,6 @@
 
 
 class OrderItem
-  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -378,35 +377,6 @@ class OrderItem
     def third_to_last!; end
   end
 
-  module GeneratedAssociationMethods
-    sig { params(args: T.untyped, blk: T.untyped).returns(::Order) }
-    def build_order(*args, &blk); end
-
-    sig { params(args: T.untyped, blk: T.untyped).returns(::Order) }
-    def create_order(*args, &blk); end
-
-    sig { params(args: T.untyped, blk: T.untyped).returns(::Order) }
-    def create_order!(*args, &blk); end
-
-    sig { returns(T.nilable(::Order)) }
-    def order; end
-
-    sig { params(value: T.nilable(::Order)).void }
-    def order=(value); end
-
-    sig { returns(T::Boolean) }
-    def order_changed?; end
-
-    sig { returns(T::Boolean) }
-    def order_previously_changed?; end
-
-    sig { returns(T.nilable(::Order)) }
-    def reload_order; end
-
-    sig { void }
-    def reset_order; end
-  end
-
   module GeneratedAssociationRelationMethods
     sig { returns(PrivateAssociationRelation) }
     def all; end
@@ -644,6 +614,51 @@ class OrderItem
     sig { void }
     def created_at_will_change!; end
 
+    sig { returns(T.nilable(::String)) }
+    def description; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def description=(value); end
+
+    sig { returns(T::Boolean) }
+    def description?; end
+
+    sig { returns(T.nilable(::String)) }
+    def description_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def description_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def description_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def description_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def description_change_to_be_saved; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def description_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def description_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def description_previous_change; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def description_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def description_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def description_was; end
+
+    sig { void }
+    def description_will_change!; end
+
     sig { returns(::Integer) }
     def id; end
 
@@ -779,51 +794,6 @@ class OrderItem
     sig { void }
     def name_will_change!; end
 
-    sig { returns(::Integer) }
-    def order_id; end
-
-    sig { params(value: ::Integer).returns(::Integer) }
-    def order_id=(value); end
-
-    sig { returns(T::Boolean) }
-    def order_id?; end
-
-    sig { returns(T.nilable(::Integer)) }
-    def order_id_before_last_save; end
-
-    sig { returns(T.untyped) }
-    def order_id_before_type_cast; end
-
-    sig { returns(T::Boolean) }
-    def order_id_came_from_user?; end
-
-    sig { returns(T.nilable([::Integer, ::Integer])) }
-    def order_id_change; end
-
-    sig { returns(T.nilable([::Integer, ::Integer])) }
-    def order_id_change_to_be_saved; end
-
-    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
-    def order_id_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
-
-    sig { returns(T.nilable(::Integer)) }
-    def order_id_in_database; end
-
-    sig { returns(T.nilable([::Integer, ::Integer])) }
-    def order_id_previous_change; end
-
-    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
-    def order_id_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
-
-    sig { returns(T.nilable(::Integer)) }
-    def order_id_previously_was; end
-
-    sig { returns(T.nilable(::Integer)) }
-    def order_id_was; end
-
-    sig { void }
-    def order_id_will_change!; end
-
     sig { returns(::BigDecimal) }
     def price; end
 
@@ -873,6 +843,9 @@ class OrderItem
     def restore_created_at!; end
 
     sig { void }
+    def restore_description!; end
+
+    sig { void }
     def restore_id!; end
 
     sig { void }
@@ -880,9 +853,6 @@ class OrderItem
 
     sig { void }
     def restore_name!; end
-
-    sig { void }
-    def restore_order_id!; end
 
     sig { void }
     def restore_price!; end
@@ -895,6 +865,12 @@ class OrderItem
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
     def saved_change_to_created_at?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_description; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def saved_change_to_description?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { returns(T.nilable([::Integer, ::Integer])) }
     def saved_change_to_id; end
@@ -913,12 +889,6 @@ class OrderItem
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
     def saved_change_to_name?(from: T.unsafe(nil), to: T.unsafe(nil)); end
-
-    sig { returns(T.nilable([::Integer, ::Integer])) }
-    def saved_change_to_order_id; end
-
-    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
-    def saved_change_to_order_id?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { returns(T.nilable([::BigDecimal, ::BigDecimal])) }
     def saved_change_to_price; end
@@ -981,6 +951,9 @@ class OrderItem
     def will_save_change_to_created_at?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def will_save_change_to_description?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
     def will_save_change_to_id?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
@@ -988,9 +961,6 @@ class OrderItem
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
     def will_save_change_to_name?(from: T.unsafe(nil), to: T.unsafe(nil)); end
-
-    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
-    def will_save_change_to_order_id?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
     def will_save_change_to_price?(from: T.unsafe(nil), to: T.unsafe(nil)); end
