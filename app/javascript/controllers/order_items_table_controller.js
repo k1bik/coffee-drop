@@ -19,8 +19,10 @@ export default class OrderItemsTableController extends Controller {
         { name: "Дата обновления", formatter: date => this._formatDate(date) },
         {
           name: "Действия",
+          sort: false,
           formatter: (_cell, row) => {
             const id = row._cells[0].data
+
             return h("div", { className: "flex space-x-2" }, [
               h("a", {
                 href: `/order_items/${id}/edit`,
