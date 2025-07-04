@@ -38,12 +38,7 @@ end %>
   </div>
 
   <div>
-    <%= f.button :submit, class: "cursor-pointer relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-purple-100 rounded hover:bg-white group py-1.5 px-2.5" do %>
-      <span class="w-56 h-48 rounded bg-purple-600 absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-      <span class="relative w-full text-left text-purple-600 transition-colors duration-300 ease-in-out group-hover:text-white">
-        <%= for_edit ? "Обновить" : "Добавить" %>
-      </span>
-    <% end %>
+    <%= render Components::Button.new(name: "order_item[submit]", type: :submit).with_content("#{for_edit ? "Обновить" : "Добавить"}") %>
   </div>
 
   <div class="absolute top-1 right-1">
