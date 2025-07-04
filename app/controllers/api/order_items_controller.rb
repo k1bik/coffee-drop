@@ -6,7 +6,7 @@ module Api
 
     sig { void }
     def index
-      order_items = OrderItem.pluck(:name, :description, :price, :created_at, :updated_at)
+      order_items = OrderItem.order(updated_at: :desc).pluck(:id, :name, :description, :price, :created_at, :updated_at)
 
       render json: order_items
     end
